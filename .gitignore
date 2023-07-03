@@ -1,0 +1,11 @@
+# Ignore directories
+node_modules/
+dist/
+
+# Ignore files
+*.log
+*.bak
+*.swp
+*.swo
+*.pyc
+.DS_Store
