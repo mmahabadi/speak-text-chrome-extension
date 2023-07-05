@@ -3,7 +3,7 @@
   "name": "Speak Text",
   "version": "1.0",
   "description": "If you need to hear the text on a page, select the text and this extension will read it to you.",
-  "permissions": ["tts", "activeTab"],
+  "permissions": ["tts", "activeTab", "scripting"],
   "background": {
     "service_worker": "scripts/background.js"
   },

@@ -1,10 +1,21 @@
-chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-  if (message.action === "say") {
-    const { text } = message;
-    speakText(text);
-  }
+chrome.action.onClicked.addListener(function (tab) {
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    function: readSelectedText,
+  });
 });
 
-function speakText(text) {
-  chrome.tts.speak(text);
+function readSelectedText() {
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    function: getSelectionText,
+  });
+}
+
+function getSelectionText() {
+  const selection = window.getSelection().toString().trim();
+  if (selection.length > 0) {
+    const utterance = new SpeechSynthesisUtterance(selection);
+    speechSynthesis.speak(utterance);
+  }
 }

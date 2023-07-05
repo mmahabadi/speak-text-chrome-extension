@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Text to speak</title>
-    <script src="scripts/popup.js"></script>
+    <title>Text-to-Speech Extension</title>
+    <style>
+      body {
+        width: 200px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+      }
+      .container img {
+        width: 30px;
+      }
+    </style>
   </head>
   <body>
-    <textarea id="text-to-speak" rows="4" cols="30"></textarea>
-    <button id="speak-button">Speak</button>
+    <div class="container">
+      <img src="assets/icon.png" id="play-button" alt="Play" />
+    </div>
+    <script src="scripts/popup.js"></script>
   </body>
 </html>
