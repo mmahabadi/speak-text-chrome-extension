@@ -1,4 +1,3 @@
-var isPlaying = false;
 document.addEventListener("DOMContentLoaded", async function () {
   const playButton = document.getElementById("play-button");
   const stopButton = document.getElementById("stop-button");
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.storage.sync.get("speed", function (data) {
         const speed = data.speed || 1.0;
-        isPlaying = true;
         chrome.scripting.executeScript({
           target: { tabId: tabs[0].id },
           function: getSelectionText,
@@ -29,16 +27,13 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 
   stopButton.addEventListener("click", function () {
-    if (isPlaying) {
-      speechSynthesis.cancel();
-      isPlaying = false;
-    }
+    speechSynthesis.cancel();
   });
 
   speedInput.addEventListener("change", function () {
     const speed = speedInput.value;
     speedText.innerText = speed + "x";
-    
+
     chrome.storage.sync.set({ speed }, function () {
       console.log("Speed saved: " + speed);
     });

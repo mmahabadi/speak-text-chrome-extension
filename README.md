@@ -5,8 +5,7 @@ This is a Chrome extension that converts selected text to speech.
 ## Features
 
 - Select text on a webpage and click the extension icon to have it read aloud.
-- Adjustable speech rate and voice selection.
-- Supports multiple languages.
+- Adjustable speech rate.
 
 ## Installation
 
